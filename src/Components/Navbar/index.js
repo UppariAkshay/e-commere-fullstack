@@ -10,7 +10,7 @@ function NavBar(props)
             <p>App Logo</p>
             <ul>
                 <li>{userType==='ADMIN' ? <Link to='/products-admin'>Products</Link> :<Link to='/products-user'>Products</Link>}</li>
-                <li>{userType==='ADMIN' ? <Link to='/order-admin'>Orders</Link> :<Link to='/cart'>Cart</Link>}</li>
+                <li>{userType==='ADMIN' ? <Link to='/order-admin'>Orders</Link> : <Link to='/cart'>Cart</Link>}</li>
             </ul>
             <li><button>Logout</button></li>
         </nav>

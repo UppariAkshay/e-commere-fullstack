@@ -1,10 +1,12 @@
 import NavBar from "../Navbar"
-import { useEffect, useState } from 'react'
+import CartContext from "../../Context"
+import { useEffect, useState, useContext } from 'react'
 import './index.css'
 
 function UserProducts()
 {
     const [allProducts, setAllProducts] = useState()
+    const {cartItems, setCartItems} = useContext(CartContext)
 
     useEffect( () => {
         const fetchAllProducts = async () => {
@@ -30,6 +32,7 @@ function UserProducts()
                         <p>Category: {eachProduct.category}</p>
                         <p>{eachProduct.available > 0 ? 'In Stock' : 'Sold'}</p>
                         <button>Buy Now</button>
+                        <button onClick={() => setCartItems(prevState => [...prevState, eachProduct])}>{eachProduct.available ? 'Add to Cart' : 'Notify Me'}</button>
                     </li>
                 ))}
             </ul>
