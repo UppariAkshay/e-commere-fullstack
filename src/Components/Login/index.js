@@ -1,5 +1,6 @@
 import './index.css'
 import { useState } from 'react'
+import { replace, useNavigate } from 'react-router-dom'
 
 function Login() {
     // USER state varaibles
@@ -16,7 +17,8 @@ function Login() {
     const [newAdminPassword, setNewAdminPassword] = useState('')
     const [createNewAdmin, setCreateNewAdmin] = useState(false)
 
-
+    const navigate = useNavigate()
+    const userLoginKey = 'userType'
 //-----------User methods-------------------
 
     const addNewUserForm = () => {
@@ -65,9 +67,16 @@ function Login() {
 
             const response = await fetch('http://localhost:5000/login', options)
             const responseData = await response.json()
-            console.log(responseData)
+            
+            if (response.ok)
+            {
+                console.log(responseData)
+                localStorage.setItem(userLoginKey, JSON.stringify(responseData))
+                navigate('/', replace)
+            }
             
         }
+
         return <form className='loginFormFORM' onSubmit={(e) => loginUser(e)}>
             <h1>User Login</h1>
             <label htmlFor='username'>User Name</label>
@@ -132,7 +141,15 @@ function Login() {
             const response = await fetch('http://localhost:5000/login-admin', options)
             const responseData = await response.json()
 
-            console.log(responseData)
+            
+            if (response.ok)
+            {
+                console.log(responseData)
+                localStorage.setItem(userLoginKey, JSON.stringify(responseData))
+                navigate('/', replace)
+            }
+            
+
         }
 
         return <form className='loginFormFORM' onSubmit={(e) => loginAdmin(e)}>
