@@ -1,0 +1,12 @@
+.allProductsUL
+{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.productCardLI
+{
+    border: 2px solid black;
+    padding: 25px;
+}

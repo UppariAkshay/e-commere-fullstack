@@ -72,7 +72,7 @@ function Login() {
             {
                 console.log(responseData)
                 localStorage.setItem(userLoginKey, JSON.stringify(responseData))
-                navigate('/', replace)
+                navigate('/products-user', replace)
             }
             
         }
@@ -146,7 +146,7 @@ function Login() {
             {
                 console.log(responseData)
                 localStorage.setItem(userLoginKey, JSON.stringify(responseData))
-                navigate('/', replace)
+                navigate('/products-admin', replace)
             }
             
 
