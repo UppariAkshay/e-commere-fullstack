@@ -1,0 +1,12 @@
+.orderItemsUL
+{
+    display: flex;
+    flex-direction: row;   
+}
+
+.orderCardLI
+{
+    border: 2px solid black;
+    padding: 25px;
+    list-style-type: none;
+}
