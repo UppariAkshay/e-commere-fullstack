@@ -10,6 +10,8 @@ function Home()
 
     return (
         <div>
+            <NavBar />
+            <h1>Home</h1>
             {userLoggedIn.userType === 'ADMIN' ? <Admin /> : <User />}
         </div>
     )

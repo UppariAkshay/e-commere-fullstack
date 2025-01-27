@@ -11,6 +11,7 @@ function NavBar(props)
             <ul>
                 <li>{userType==='ADMIN' ? <Link to='/products-admin'>Products</Link> :<Link to='/products-user'>Products</Link>}</li>
                 <li>{userType==='ADMIN' ? <Link to='/admin-orders'>Orders</Link> : <Link to='/cart'>Cart</Link>}</li>
+                {userType==='ADMIN' && <li> <Link to='/userspage-admin'>Registered Users</Link> </li> }
             </ul>
             <li><button>Logout</button></li>
         </nav>

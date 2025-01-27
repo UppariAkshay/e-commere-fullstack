@@ -19,6 +19,8 @@ function Login() {
 
     const navigate = useNavigate()
     const userLoginKey = 'userType'
+
+
 //-----------User methods-------------------
 
     const addNewUserForm = () => {
