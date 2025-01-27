@@ -17,7 +17,7 @@ function Cart()
             body: JSON.stringify({orderItems: cartItems})
         }
 
-        const response = await fetch('http://localhost:5000/place-order', options)
+        const response = await fetch('https://e-commere-fullstack-backend.onrender.com/place-order', options)
         const responseDaata = await response.json()
 
         if (response.ok)

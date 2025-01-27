@@ -9,6 +9,7 @@ function Login() {
     const [userPassword, setUserPassword] = useState('')
     const [newUserName, setNewUserName] = useState('')
     const [newUserPassword, setNewUserPassowrd] = useState('')
+    const [userFormError, setUserFormError] = useState('')
 
     //ADMIN state variables
     const [adminUserName, setAdminUserName] = useState('')
@@ -16,6 +17,7 @@ function Login() {
     const [newAdminUserName, setNewAdminUserName] = useState('')
     const [newAdminPassword, setNewAdminPassword] = useState('')
     const [createNewAdmin, setCreateNewAdmin] = useState(false)
+    const [adminFormError, setAdminFormError] = useState('')
 
     const navigate = useNavigate()
     const userLoginKey = 'userType'
@@ -37,10 +39,21 @@ function Login() {
 
             console.log(options)
 
-            const response = await fetch('http://localhost:5000/register', options)
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/register', options)
             const responseData = await response.json()
 
-            setCreateNewUser(false)
+            if (response.ok)
+            {
+                setCreateNewUser(false)
+                setNewUserName('')
+                setNewUserPassowrd('')
+                setUserFormError('')
+            }
+            else{
+                setUserFormError(responseData.error)
+            }
+
+            
         }
 
         return <form className='loginFormFORM' onSubmit={(e) => registerUser(e)}>
@@ -51,11 +64,13 @@ function Login() {
             <label htmlFor='newUserPassword'>Password</label>
             <input onChange={(e) => setNewUserPassowrd(e.target.value)} id='newUserPassword' type="text" />
 
-            <button type='submit'>Register</button>
+            <button className='createNewAccountBUTTON' type='submit'>Register</button>
+            <p className='formErrorMessage'>{userFormError}</p>
         </form>
     }
 
     const loginUserForm = () => {
+
         const loginUser = async e  => {
             e.preventDefault()
 
@@ -67,32 +82,37 @@ function Login() {
                 body: JSON.stringify({username: userName, password: userPassword})
             }
 
-            const response = await fetch('http://localhost:5000/login', options)
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/login', options)
             const responseData = await response.json()
             
             if (response.ok)
             {
-                console.log(responseData)
                 localStorage.setItem(userLoginKey, JSON.stringify(responseData))
                 navigate('/', replace)
+                setUserName('')
+                setUserPassword('')
+                setUserFormError('')
+            }
+            else{
+                setUserFormError(responseData.error)
             }
             
         }
 
         return <form className='loginFormFORM' onSubmit={(e) => loginUser(e)}>
             <h1>User Login</h1>
-            {/* <div className='inputOptionDIV'> */}
+
                 <label htmlFor='username'>User Name</label>
                 <input placeholder='Enter User Name' onChange={(e) => setUserName(e.target.value)} id='username' value={userName} type="text" />
-            {/* </div> */}
 
-            {/* <div className='inputOptionDIV'> */}
+
                 <label htmlFor='password'>Password</label>
-                <input placeholder='Enter Password' onChange={(e) => setUserPassword(e.target.value)} id='password' type="password" />
-            {/* </div> */}
+                <input placeholder='Enter Password' onChange={(e) => setUserPassword(e.target.value)} id='password' value={userPassword} type="password" />
+
 
             <button className='loginBUTTON' type="submit">Login</button>
             <button className='createNewAccountBUTTON' type='button' onClick={() => setCreateNewUser(true)}>Create New Account</button>
+            <p className='formErrorMessage'>{userFormError}</p>
         </form>
     }
 
@@ -111,13 +131,22 @@ function Login() {
                 body: JSON.stringify({admin_username: newAdminUserName, admin_password: newAdminPassword})
             }
 
-            
 
-            const response = await fetch('http://localhost:5000/register-admin', options)
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/register-admin', options)
             const responseData = await response.json()
-            console.log(responseData)
 
-            setCreateNewUser(false)
+            if (response.ok)
+            {
+                setCreateNewAdmin(false)
+                setNewAdminUserName('')
+                setNewAdminPassword('')
+                setAdminFormError('')
+            }
+            else{
+                setAdminFormError(responseData.error)
+            }
+
+            
         }
 
         return <form className='loginFormFORM' onSubmit={(e) => registerAdmin(e)}>
@@ -128,7 +157,8 @@ function Login() {
             <label htmlFor='newAdminPassword'>Admin Password</label>
             <input onChange={(e) => setNewAdminPassword(e.target.value)} id='newUserPassword' value={newAdminPassword} type="text" />
 
-            <button type='submit'>Register</button>
+            <button className='createNewAccountBUTTON' type='submit'>Register</button>
+            <p className='formErrorMessage'>{adminFormError}</p>
         </form>
     }
 
@@ -144,15 +174,20 @@ function Login() {
                 body: JSON.stringify({admin_username: adminUserName, admin_password: adminPassword})
             }
 
-            const response = await fetch('http://localhost:5000/login-admin', options)
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/login-admin', options)
             const responseData = await response.json()
 
             
             if (response.ok)
             {
-                console.log(responseData)
+                setAdminPassword('')
+                setAdminFormError('')
+                setAdminUserName('')
                 localStorage.setItem(userLoginKey, JSON.stringify(responseData))
                 navigate('/', replace)
+            }
+            else{
+                setAdminFormError(responseData.error)
             }
             
 
@@ -168,6 +203,7 @@ function Login() {
 
                     <button className='loginBUTTON' type="submit">Login</button>
                     <button className='createNewAccountBUTTON' onClick={() => setCreateNewAdmin(true)}>Create New Admin</button>
+                    <p className='formErrorMessage'>{adminFormError}</p>
                 </form>
     }
 

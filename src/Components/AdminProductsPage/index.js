@@ -11,7 +11,7 @@ function AdminProducts()
 
     useEffect( () => {
         const fetchAllProducts = async () => {
-            const response = await fetch('http://localhost:5000/all-products')
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/all-products')
             const allProducts = await response.json()
 
             setAllProducts(allProducts)

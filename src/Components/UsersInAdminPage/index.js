@@ -8,7 +8,7 @@ function UsersInAdminPage()
 
     useEffect( () => {
         const fetchAllUsers = async () => {
-            const response = await fetch('http://localhost:5000/all-users')
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/all-users')
             const responseData = await response.json()
 
             setAllRegisteredUsers(responseData)

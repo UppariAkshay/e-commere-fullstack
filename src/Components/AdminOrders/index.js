@@ -9,7 +9,7 @@ function AdminOrders()
 
     useEffect( () => {
         const fetchOrders = async () => {
-            const response = await fetch('http://localhost:5000/orders')
+            const response = await fetch('https://e-commere-fullstack-backend.onrender.com/orders')
             const responseData = await response.json()
 
             if (response.ok)
