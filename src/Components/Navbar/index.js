@@ -16,14 +16,15 @@ function NavBar(props)
     return (
         <nav className="navbarNAV">
             <p>App Logo</p>
-            <ul>
-                <li>{userType==='ADMIN' ? <Link to='/products-admin'>Products</Link> :<Link to='/products-user'>Products</Link>}</li>
-                <li>{userType==='ADMIN' ? <Link to='/admin-orders'>Orders</Link> : <Link to='/cart'>Cart</Link>}</li>
-                {userType==='ADMIN' && <li> <Link to='/userspage-admin'>Registered Users</Link> </li> }
+            <ul className='navOptionsUL'>
+                <li><Link className='navOptionLINK' to='/'>Home</Link></li>
+                <li>{userType==='ADMIN' ? <Link className='navOptionLINK' to='/products-admin'>Products</Link> :<Link className='navOptionLINK' to='/products-user'>Products</Link>}</li>
+                <li>{userType==='ADMIN' ? <Link className='navOptionLINK' to='/admin-orders'>Orders</Link> : <Link className='navOptionLINK' to='/cart'>Cart</Link>}</li>
+                {userType==='ADMIN' && <li> <Link className='navOptionLINK' to='/userspage-admin'>Registered Users</Link> </li> }
             </ul>
-            <li><button onClick={onClickLogout}>Logout</button></li>
+            <button className='logoutBUTTON' onClick={onClickLogout}>Logout</button>
         </nav>
     )
 }
 
-export default NavBar
+export default NavBar 

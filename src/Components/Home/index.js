@@ -1,7 +1,7 @@
 import NavBar from "../Navbar"
 import {useState, useEffect} from 'react'
-import Admin from "../AdminMainPage"
-import User from '../UserMainPage'
+import AdminHome from "../AdminMainPage"
+import UserHome from '../UserMainPage'
 
 function Home()
 {
@@ -10,9 +10,7 @@ function Home()
 
     return (
         <div>
-            <NavBar />
-            <h1>Home</h1>
-            {userLoggedIn.userType === 'ADMIN' ? <Admin /> : <User />}
+            {userLoggedIn.userType === 'ADMIN' ? <AdminHome /> : <UserHome />}
         </div>
     )
 }

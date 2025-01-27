@@ -1,13 +1,13 @@
 import NavBar from "../Navbar"
 
-function User()
+function UserHome()
 {
     return (
         <div>
             <NavBar userType='USER' />
-            <h1>User</h1>
+            <h1>Welcome to the Application, What you are Looking for to shop?</h1>
         </div>
     )
 }
 
-export default User
+export default UserHome

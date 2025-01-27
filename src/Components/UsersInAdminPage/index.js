@@ -21,8 +21,8 @@ function UsersInAdminPage()
         <div>
             <NavBar userType='ADMIN' />
             <h1>Registered Users</h1>
-            <ul>
-                {allRegisteredUsers ? allRegisteredUsers.map(eachUser => <li>
+            <ul className='registeredUsesrsUL'>
+                {allRegisteredUsers ? allRegisteredUsers.map(eachUser => <li className='registeredUserCardLI'>
                     <p>User Name: {eachUser.username}</p>
                 </li>) : 'No Users Registered'}
             </ul>
@@ -30,4 +30,4 @@ function UsersInAdminPage()
     )
 }
 
-export default UsersInAdminPage
+export default UsersInAdminPage 

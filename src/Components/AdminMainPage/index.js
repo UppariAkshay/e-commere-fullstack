@@ -1,15 +1,14 @@
 import NavBar from "../Navbar"
 import AdminProducts from "../AdminProductsPage"
 
-function Admin()
+function AdminHome()
 {
     return (
         <div>
-            {/* <NavBar userType='ADMIN' />
-            <h1>Admin</h1> */}
-            {/* <AdminProducts /> */}
+            <NavBar userType='ADMIN' />
+            <h1>Welcome to your Admin Page, Here you can check all details about your Application, Like Current Orders, Registered Users etc...</h1>
         </div>
     )
 }
 
-export default Admin
+export default AdminHome

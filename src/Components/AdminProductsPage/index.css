@@ -1,11 +1,42 @@
+.addNewProductFORM
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+input
+{
+    border: 1px solid grey;
+    height: 35px;
+    border-radius: 7px;
+}
+select{
+    border: 1px solid grey;
+    height: 35px;
+    width: 200px;
+    border-radius: 7px;
+}
+
 .allProductsDIV
 {
     display: flex;
     flex-direction: row;    
+    justify-content: space-around;
 }
 
 .productCardDIV
 {
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 25px;
+    border-radius: 10px;
+}
+
+.addNewProductBUTTON
+{
+    border-width: 0px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
 }

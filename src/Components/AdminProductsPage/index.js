@@ -45,40 +45,48 @@ function AdminProducts()
     return (
         <div>
             <NavBar userType='ADMIN'/>
-            <form onSubmit={(e) => addNewProduct(e)}>
-                    <h1>Add New Product</h1>
-                    <label htmlFor="poductName">Product Name</label>
-                    <input id="poductName" onChange={(e) => setNewProductDetails(prevState => ({...prevState, productName: e.target.value}))} />
-
-                    <label htmlFor="category">Category</label>
-                    <select id="category" onChange={(e) => setNewProductDetails(prevState => ({...prevState, category: e.target.value}))}>
-                        <option>--Select--</option>
-                        <option value='Fashion'>Fashion</option>
-                        <option value='Electronics'>Electronics</option>
-                        <option value='Grocery'>Grocery</option>
-                    </select>
+            <h1>Add New Product</h1>
+            <form className="addNewProductFORM" onSubmit={(e) => addNewProduct(e)}>
+                    <div>
+                        <label htmlFor="poductName">Product Name</label>
+                        <input id="poductName" onChange={(e) => setNewProductDetails(prevState => ({...prevState, productName: e.target.value}))} />
+                    </div>
+                    <div>
+                        <label htmlFor="category">Category</label>
+                        <select id="category" onChange={(e) => setNewProductDetails(prevState => ({...prevState, category: e.target.value}))}>
+                            <option>--Select--</option>
+                            <option value='Fashion'>Fashion</option>
+                            <option value='Electronics'>Electronics</option>
+                            <option value='Grocery'>Grocery</option>
+                        </select>
+                    </div>
                     
-                    <label htmlFor="total buyed">Total Buyed</label>
-                    <input id="total buyed" onChange={(e) => setNewProductDetails(prevState => ({...prevState, buyed: e.target.value}))} />
+                    <div>
+                        <label htmlFor="total buyed">Total Buyed</label>
+                        <input id="total buyed" onChange={(e) => setNewProductDetails(prevState => ({...prevState, buyed: e.target.value}))} />
+                    </div>
 
-                    <button type='submit'>Add New Product</button>
+                    <button className="addNewProductBUTTON" type='submit'>Add New Product</button>
                     
-                </form>
+            </form>
+
+            <h1>All Products</h1>
             <div className='allProductsDIV'>
+                
                 {
                     allProducts && allProducts.map(eachProduct => (
                         <div className="productCardDIV">
                             <h3>{eachProduct.productName}</h3>
-                            <p>{eachProduct.category}</p>
-                            <p>{eachProduct.buyed}</p>
-                            <p>{eachProduct.sold}</p>
-                            <p>{eachProduct.available}</p>
+                            <p>Category: {eachProduct.category}</p>
+                            <p>TotalBuyed: {eachProduct.buyed}</p>
+                            <p>Total Sold: {eachProduct.sold}</p>
+                            <p>Currently Available: {eachProduct.available}</p>
                         </div>
                     ))
                 }
             </div>
         </div>
-    )
+    ) 
 }
 
 export default AdminProducts

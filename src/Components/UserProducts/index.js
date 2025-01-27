@@ -31,8 +31,8 @@ function UserProducts()
                         <p>{eachProduct.productName}</p>
                         <p>Category: {eachProduct.category}</p>
                         <p>{eachProduct.available > 0 ? 'In Stock' : 'Sold'}</p>
-                        <button>Buy Now</button>
-                        <button onClick={() => setCartItems(prevState => [...prevState, eachProduct])}>{eachProduct.available ? 'Add to Cart' : 'Notify Me'}</button>
+                        <button className="buyNowBUTTON">Buy Now</button>
+                        <button className="addToCartBUTTON" onClick={() => setCartItems(prevState => [...prevState, eachProduct])}>{eachProduct.available ? 'Add to Cart' : 'Notify Me'}</button>
                     </li>
                 ))}
             </ul>

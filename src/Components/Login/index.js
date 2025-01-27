@@ -20,7 +20,7 @@ function Login() {
     const navigate = useNavigate()
     const userLoginKey = 'userType'
 
-
+ 
 //-----------User methods-------------------
 
     const addNewUserForm = () => {
@@ -74,21 +74,25 @@ function Login() {
             {
                 console.log(responseData)
                 localStorage.setItem(userLoginKey, JSON.stringify(responseData))
-                navigate('/products-user', replace)
+                navigate('/', replace)
             }
             
         }
 
         return <form className='loginFormFORM' onSubmit={(e) => loginUser(e)}>
             <h1>User Login</h1>
-            <label htmlFor='username'>User Name</label>
-            <input onChange={(e) => setUserName(e.target.value)} id='username' value={userName} type="text" />
+            {/* <div className='inputOptionDIV'> */}
+                <label htmlFor='username'>User Name</label>
+                <input placeholder='Enter User Name' onChange={(e) => setUserName(e.target.value)} id='username' value={userName} type="text" />
+            {/* </div> */}
 
-            <label htmlFor='password'>Password</label>
-            <input onChange={(e) => setUserPassword(e.target.value)} id='password' type="text" />
+            {/* <div className='inputOptionDIV'> */}
+                <label htmlFor='password'>Password</label>
+                <input placeholder='Enter Password' onChange={(e) => setUserPassword(e.target.value)} id='password' type="password" />
+            {/* </div> */}
 
-            <button type="submit">Login</button>
-            <button type='button' onClick={() => setCreateNewUser(true)}>Create New Account</button>
+            <button className='loginBUTTON' type="submit">Login</button>
+            <button className='createNewAccountBUTTON' type='button' onClick={() => setCreateNewUser(true)}>Create New Account</button>
         </form>
     }
 
@@ -148,7 +152,7 @@ function Login() {
             {
                 console.log(responseData)
                 localStorage.setItem(userLoginKey, JSON.stringify(responseData))
-                navigate('/products-admin', replace)
+                navigate('/', replace)
             }
             
 
@@ -157,13 +161,13 @@ function Login() {
         return <form className='loginFormFORM' onSubmit={(e) => loginAdmin(e)}>
                     <h1>Admin Login</h1>
                     <label htmlFor='adminUserName'>AdminUser Name</label>
-                    <input id='adminUserName' onChange={(e) => setAdminUserName(e.target.value)} value={adminUserName} type="text" />
+                    <input id='adminUserName' placeholder='Enter Admin User Name' onChange={(e) => setAdminUserName(e.target.value)} value={adminUserName} type="text" />
 
                     <label htmlFor='adminPassword'>Password</label>
-                    <input id='adminPassword' onChange={(e) => setAdminPassword(e.target.value)} value={adminPassword} type="text" />
+                    <input id='adminPassword' placeholder='Enter Admin Password' onChange={(e) => setAdminPassword(e.target.value)} value={adminPassword} type="password" />
 
-                    <button type="submit">Login</button>
-                    <button onClick={() => setCreateNewAdmin(true)}>Create New Admin</button>
+                    <button className='loginBUTTON' type="submit">Login</button>
+                    <button className='createNewAccountBUTTON' onClick={() => setCreateNewAdmin(true)}>Create New Admin</button>
                 </form>
     }
 

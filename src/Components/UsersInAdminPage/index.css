@@ -1,0 +1,17 @@
+.registeredUsesrsUL
+{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.registeredUserCardLI
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}

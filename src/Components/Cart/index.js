@@ -7,7 +7,6 @@ function Cart()
 {
     const [orderPlaced, setOrderPlaced] = useState(false)
     const {cartItems, setCartItems} = useContext(CartContext)
-    console.log(cartItems)
 
     const placeOrder = async () => {
         const options = {
@@ -45,7 +44,7 @@ function Cart()
                             <p>{eachProduct.category}</p>
                         </li> )}
                     </ul>
-                    <button disabled={cartItems.length===0} onClick={placeOrder}>Place Order</button>
+                    <button className='placeOrderBUTTON' disabled={cartItems.length===0} onClick={placeOrder}>Place Order</button>
                </div>
     }
 

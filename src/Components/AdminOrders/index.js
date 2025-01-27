@@ -40,7 +40,7 @@ function AdminOrders()
                     </li>)
                 }
             </ul>
-        </div>
+        </div> 
     )
 }
 
