@@ -1,9 +1,17 @@
 import './index.css'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function NavBar(props)
 {
     const {userType} = props
+    const navigate = useNavigate()
+
+    const onClickLogout = async () => {
+        const userLogin = localStorage.removeItem('userType')
+        
+        navigate('/login')
+        
+    }
 
     return (
         <nav className="navbarNAV">
@@ -13,7 +21,7 @@ function NavBar(props)
                 <li>{userType==='ADMIN' ? <Link to='/admin-orders'>Orders</Link> : <Link to='/cart'>Cart</Link>}</li>
                 {userType==='ADMIN' && <li> <Link to='/userspage-admin'>Registered Users</Link> </li> }
             </ul>
-            <li><button>Logout</button></li>
+            <li><button onClick={onClickLogout}>Logout</button></li>
         </nav>
     )
 }
