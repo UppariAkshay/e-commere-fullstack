@@ -21,7 +21,7 @@ function AdminProducts()
     }, [])
 
 
-
+ 
     const addNewProduct = async (e) => {
         e.preventDefault()
 
@@ -33,7 +33,7 @@ function AdminProducts()
             body: JSON.stringify(newProductDetails)
         }
 
-        const response = await fetch('http://localhost:5000/add-new-product', options)
+        const response = await fetch('https://e-commere-fullstack-backend.onrender.com/add-new-product', options)
         const allProducts = await response.json()
 
         if (response.ok)

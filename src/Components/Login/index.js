@@ -137,6 +137,7 @@ function Login() {
 
             if (response.ok)
             {
+                console.log(responseData)
                 setCreateNewAdmin(false)
                 setNewAdminUserName('')
                 setNewAdminPassword('')
@@ -175,7 +176,9 @@ function Login() {
             }
 
             const response = await fetch('https://e-commere-fullstack-backend.onrender.com/login-admin', options)
+            // const response = await fetch('http://localhost:5000/login-admin', options)
             const responseData = await response.json()
+            console.log(responseData)
 
             
             if (response.ok)
